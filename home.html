@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KiddoCare - Child Health Monitoring App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #ff9e6d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --age-0-2: #FFCCBC;
+            --age-3-5: #C8E6C9;
+            --age-6-10: #B3E5FC;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #ff8a4d;
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .app-image {
+            max-width: 600px;
+            margin: 40px auto 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .app-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(74, 111, 165, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Activities Section */
+        .activities {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        
+        .age-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .age-tab {
+            padding: 12px 25px;
+            background-color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .age-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .age-tab[data-age="0-2"]:hover {
+            background-color: var(--age-0-2);
+        }
+        
+        .age-tab[data-age="3-5"]:hover {
+            background-color: var(--age-3-5);
+        }
+        
+        .age-tab[data-age="6-10"]:hover {
+            background-color: var(--age-6-10);
+        }
+        
+        .activities-content {
+            display: none;
+        }
+        
+        .activities-content.active {
+            display: block;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .activity-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .activity-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Growth Tracking Section */
+        .growth-tracking {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .growth-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .growth-info {
+            flex: 1;
+        }
+        
+        .growth-chart {
+            flex: 1;
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .chart-container {
+            height: 300px;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .chart-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #e3f2fd, #bbdefb);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .growth-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .growth-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .growth-feature i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .form-container p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .google-form-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .google-form-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                padding: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 12px;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                max-width: 300px;
+                margin: 20px auto 0;
+            }
+            
+            .hero-buttons .cta-button {
+                width: 100%;
+                padding: 12px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .features, .activities, .growth-tracking, .form-section {
+                padding: 60px 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 25px 20px;
+            }
+            
+            .age-tabs {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .age-tab {
+                width: 100%;
+                padding: 15px 20px;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .growth-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .growth-chart {
+                padding: 20px;
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+            
+            .growth-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .form-container {
+                padding: 25px 20px;
+            }
+            
+            .google-form-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .features, .activities, .growth-tracking, .form-section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .feature-card:hover,
+            .activity-card:hover {
+                transform: none;
+            }
+            
+            .nav-links a:hover {
+                color: var(--dark);
+            }
+            
+            .cta-button:hover,
+            .google-form-btn:hover {
+                transform: scale(1.02);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>KiddoCare</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#features">Features</a>
+                    <a href="#activities">Activities</a>
+                    <a href="#growth">Growth Tracking</a>
+                    <a href="#form">Join Beta</a>
+                </div>
+                <button class="cta-button" id="cta-button">Join Beta</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Peace of Mind for Parents,<br>Healthier Kids</h1>
+            <p>Track your child's health milestones, symptoms, vaccinations, growth patterns, and get personalized activity recommendations all in one simple app.</p>
+            <div class="hero-buttons">
+                <button class="cta-button">Get Started</button>
+                <button class="cta-button" style="background-color: white; color: var(--primary); border: 2px solid var(--primary);">Learn More</button>
+            </div>
+            <div class="app-image">
+                <!-- Placeholder for app screenshot -->
+                <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); height: 300px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    App Screenshot Preview
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Everything You Need to Track Your Child's Health</h2>
+                <p>Designed specifically for parents of infants, toddlers, and young children</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-thermometer"></i>
+                    </div>
+                    <h3>Symptom Tracking</h3>
+                    <p>Log symptoms, fever patterns, and medication schedules with easy-to-use tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Vaccination Records</h3>
+                    <p>Never miss a vaccination with automated reminders and digital record keeping.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3>Growth Monitoring</h3>
+                    <p>Track height, weight, and developmental milestones with visual charts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Personalized Activity Recommendations</h3>
+                        <p>Access AI-powered, research-based activities tailored to enhance your child's developmental milestones and essential skill growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Medication Log</h3>
+                    <p>Track medications, dosages, and schedules with timely reminders.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Milestone Tracking</h3>
+                    <p>Document important developmental milestones from first steps to first words.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities" id="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Age-Appropriate Activity Recommendations</h2>
+                <p>Discover activities tailored to your child's developmental stage</p>
+            </div>
+            
+            <div class="age-tabs">
+                <button class="age-tab active" data-age="0-2">0-2 Years</button>
+                <button class="age-tab" data-age="3-5">3-5 Years</button>
+                <button class="age-tab" data-age="6-10">6-10 Years</button>
+            </div>
+            
+            <!-- 0-2 Years Activities -->
+            <div class="activities-content active" id="activities-0-2">
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <h4>Tummy Time Play</h4>
+                        <p>Place colorful toys just out of reach to encourage lifting head and strengthening neck muscles.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Sensory Bags</h4>
+                        <p>Create sealed bags with different textures (gel, water beads) for safe tactile exploration.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Peek-a-Boo</h4>
+                        <p>Classic game that teaches object permanence and social interaction.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Stacking Blocks</h4>
+                        <p>Develop fine motor skills and hand-eye coordination with soft, colorful blocks.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3-5 Years Activities -->
+            <div class="activities-content" id="activities-3-5">
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <h4>Obstacle Course</h4>
+                        <p>Create a simple indoor course with pillows and furniture to develop gross motor skills.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Sorting Games</h4>
+                        <p>Sort objects by color, shape, or size to develop cognitive and classification skills.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Puzzle Time</h4>
+                        <p>Age-appropriate puzzles to develop problem-solving and spatial awareness.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Nature Scavenger Hunt</h4>
+                        <p>Find specific items outdoors to encourage observation and exploration.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6-10 Years Activities -->
+            <div class="activities-content" id="activities-6-10">
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <h4>Science Experiments</h4>
+                        <p>Simple kitchen science to encourage curiosity and critical thinking.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Board Games</h4>
+                        <p>Strategy games that teach planning, patience, and sportsmanship.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Creative Writing</h4>
+                        <p>Story starters and journaling to develop language and self-expression.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4>Team Sports</h4>
+                        <p>Organized activities that teach cooperation, rules, and physical fitness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Tracking Section -->
+    <section class="growth-tracking" id="growth">
+        <div class="container">
+            <div class="section-title">
+                <h2>Track Your Child's Growth & Development</h2>
+                <p>Monitor height, weight, and milestones with visual charts and expert guidance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2>Help Us Improve KiddoCare</h2>
+                <p>We're currently testing our app and would love your feedback. Click the button below to access our Google Form and share your thoughts.</p>
+                
+                <!-- Replace the URL with your actual Google Forms URL -->
+                <button class="google-form-btn" id="googleFormBtn">
+                    <i class="fab fa-google"></i>
+                    Access Our Feedback Form
+                </button>
+                
+                <p style="margin-top: 30px; font-size: 0.9rem; color: #888;">
+                    Your feedback will help us create the best possible health monitoring app for parents.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KiddoCare</h3>
+                    <p>The trusted health monitoring app for parents of children up to 10 years old.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#growth">Growth Tracking</a></li>
+                        <li><a href="#form">Join Beta</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> kiddocaresupport@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Health St, Care City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 KiddoCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // Google Forms button functionality
+        document.getElementById('googleFormBtn').addEventListener('click', function() {
+            // Replace with your actual Google Forms URL
+            window.open('https://forms.gle/your-form-id-here', '_blank');
+        });
+        
+        document.getElementById('cta-button').addEventListener('click', function() {
+            // Replace with your actual Google Forms URL
+            window.open('https://forms.gle/your-form-id-here', '_blank');
+        });
+        
+        // Age tab functionality
+        const ageTabs = document.querySelectorAll('.age-tab');
+        const activitiesContents = document.querySelectorAll('.activities-content');
+        
+        ageTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                ageTabs.forEach(t => t.classList.remove('active'));
+                activitiesContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const age = tab.getAttribute('data-age');
+                document.getElementById(`activities-${age}`).classList.add('active');
+            });
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
