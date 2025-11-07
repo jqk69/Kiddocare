@@ -136,17 +136,261 @@
             margin-top: 30px;
         }
         
-        .app-image {
-            max-width: 600px;
-            margin: 40px auto 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        /* Professional Mobile Demo */
+        .mobile-demo-container {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
         }
         
-        .app-image img {
-            width: 100%;
-            display: block;
+        .mobile-demo {
+            width: 320px;
+            height: 640px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            border: 12px solid #1a1a1a;
+        }
+        
+        .demo-status-bar {
+            height: 44px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo-header-content h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .demo-header-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .demo-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .demo-content {
+            padding: 20px;
+            height: calc(100% - 160px);
+            overflow-y: auto;
+        }
+        
+        .demo-section {
+            margin-bottom: 25px;
+        }
+        
+        .demo-section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .demo-section-title h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .demo-section-title a {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .demo-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .demo-stat {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .demo-stat:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .demo-stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .demo-stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        
+        .demo-stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .demo-feature-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .demo-feature-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .demo-feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .demo-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .demo-feature-card h4 {
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .demo-feature-card p {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .demo-activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .demo-activity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .demo-activity:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+        
+        .demo-activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .demo-activity-info {
+            flex: 1;
+        }
+        
+        .demo-activity-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .demo-activity-desc {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .demo-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 20px;
+        }
+        
+        .demo-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: #718096;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .demo-nav-item.active {
+            color: var(--primary);
+        }
+        
+        .demo-nav-item i {
+            font-size: 1.2rem;
         }
         
         /* Features Section */
@@ -174,10 +418,11 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: stretch;
         }
-        
+
         .feature-card {
             background-color: var(--light);
             border-radius: 10px;
@@ -539,12 +784,10 @@
             .features, .activities, .growth-tracking, .form-section {
                 padding: 60px 0;
             }
-            
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
             }
-            
             .feature-card {
                 padding: 25px 20px;
             }
@@ -596,6 +839,12 @@
                 gap: 30px;
                 text-align: center;
             }
+            
+            .mobile-demo {
+                width: 300px;
+                height: 600px;
+                border-width: 10px;
+            }
         }
         
         /* Extra small devices */
@@ -623,6 +872,12 @@
             .logo {
                 font-size: 1.3rem;
             }
+            
+            .mobile-demo {
+                width: 280px;
+                height: 560px;
+                border-width: 8px;
+            }
         }
         
         /* Touch-friendly improvements */
@@ -641,6 +896,7 @@
                 transform: scale(1.02);
             }
         }
+        
     </style>
 </head>
 <body>
@@ -670,15 +926,174 @@
     <section class="hero">
         <div class="container">
             <h1>Peace of Mind for Parents,<br>Healthier Kids</h1>
-            <p>Track your child's health milestones, symptoms, vaccinations, growth patterns, and get personalized activity recommendations all in one simple app.</p>
-            <div class="hero-buttons">
-                <button class="cta-button">Get Started</button>
-                <button class="cta-button" style="background-color: white; color: var(--primary); border: 2px solid var(--primary);">Learn More</button>
-            </div>
-            <div class="app-image">
-                <!-- Placeholder for app screenshot -->
-                <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); height: 300px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                    App Screenshot Preview
+            <p>Track your child's health milestones, symptoms, vaccinations, growth patterns, and skill development, and get personalized activity recommendations - all in one simple app.</p>
+
+            
+            <!-- Professional Mobile Demo -->
+            <div class="mobile-demo-container">
+                <div class="mobile-demo">
+                    <div class="demo-status-bar">
+                        <span>9:41</span>
+                        <span>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi" style="margin-left: 5px;"></i>
+                            <i class="fas fa-battery-three-quarters" style="margin-left: 5px;"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="demo-header">
+                        <div class="demo-header-content">
+                            <h2>Hi Sarah!</h2>
+                            <p style="color: white;">Liam's Health Dashboard</p>
+
+                        </div>
+                        <div class="demo-avatar">
+                            <i class="fas fa-child"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-content">
+                        <div class="demo-section">
+                            <div class="demo-section-title">
+                                <h3>Today's Stats</h3>
+                            </div>
+                            <div class="demo-stats">
+                                <div class="demo-stat">
+                                    <div class="demo-stat-icon" style="background: #4f8bff;">
+                                        <i class="fas fa-weight"></i>
+                                    </div>
+                                    <div class="demo-stat-value">8.2 kg</div>
+                                    <div class="demo-stat-label">Weight</div>
+                                </div>
+                                
+                                <div class="demo-stat">
+                                    <div class="demo-stat-icon" style="background: #6c5ce7;">
+                                        <i class="fas fa-ruler-vertical"></i>
+                                    </div>
+                                    <div class="demo-stat-value">68 cm</div>
+                                    <div class="demo-stat-label">Height</div>
+                                </div>
+                                
+                                <div class="demo-stat">
+                                    <div class="demo-stat-icon" style="background: #00b894;">
+                                        <i class="fas fa-syringe"></i>
+                                    </div>
+                                    <div class="demo-stat-value">12/15</div>
+                                    <div class="demo-stat-label">Vaccinations</div>
+                                </div>
+                                
+                                <div class="demo-stat">
+                                    <div class="demo-stat-icon" style="background: #fd79a8;">
+                                        <i class="fas fa-thermometer"></i>
+                                    </div>
+                                    <div class="demo-stat-value">36.8°C</div>
+                                    <div class="demo-stat-label">Temperature</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-section">
+                            <div class="demo-section-title">
+                                <h3>Key Features</h3>
+                            </div>
+                            <div class="demo-feature-cards">
+                                <div class="demo-feature-card">
+                                    <div class="demo-feature-icon" style="background: #4f8bff;">
+                                        <i class="fas fa-thermometer"></i>
+                                    </div>
+                                    <h4>Symptom Tracking</h4>
+                                    <p>Log symptoms & medications</p>
+                                </div>
+                                
+                                <div class="demo-feature-card">
+                                    <div class="demo-feature-icon" style="background: #6c5ce7;">
+                                        <i class="fas fa-syringe"></i>
+                                    </div>
+                                    <h4>Vaccination Records</h4>
+                                    <p>Never miss a shot</p>
+                                </div>
+                                
+                                <div class="demo-feature-card">
+                                    <div class="demo-feature-icon" style="background: #00b894;">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>Growth Monitoring</h4>
+                                    <p>Track milestones</p>
+                                </div>
+                                
+                                <div class="demo-feature-card">
+                                    <div class="demo-feature-icon" style="background: #fd79a8;">
+                                        <i class="fas fa-running"></i>
+                                    </div>
+                                    <h4>Activity Ideas</h4>
+                                    <p>Personalized recommendations</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-section">
+                            <div class="demo-section-title">
+                                <h3>Today's Activities</h3>
+                                <a href="#">See All</a>
+                            </div>
+                            <div class="demo-activity-list">
+                                <div class="demo-activity">
+                                    <div class="demo-activity-icon" style="background: #ffeaa7;">
+                                        <i class="fas fa-puzzle-piece"></i>
+                                    </div>
+                                    <div class="demo-activity-info">
+                                        <div class="demo-activity-title">Shape Sorter</div>
+                                        <div class="demo-activity-desc">Fine motor skills development</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="demo-activity">
+                                    <div class="demo-activity-icon" style="background: #a29bfe;">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="demo-activity-info">
+                                        <div class="demo-activity-title">Story Time</div>
+                                        <div class="demo-activity-desc">Language & cognitive development</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="demo-activity">
+                                    <div class="demo-activity-icon" style="background: #fd79a8;">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                    <div class="demo-activity-info">
+                                        <div class="demo-activity-title">Music & Movement</div>
+                                        <div class="demo-activity-desc">Auditory & motor skills</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-footer">
+                        <div class="demo-navbar">
+                            <div class="demo-nav-item active">
+                                <i class="fas fa-home"></i>
+                                <span>Home</span>
+                            </div>
+                            <div class="demo-nav-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Growth</span>
+                            </div>
+                            <div class="demo-nav-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Health</span>
+                            </div>
+                            <div class="demo-nav-item">
+                                <i class="fas fa-running"></i>
+                                <span>Activities</span>
+                            </div>
+                            <div class="demo-nav-item">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -696,8 +1111,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-thermometer"></i>
                     </div>
-                    <h3>Symptom Tracking</h3>
-                    <p>Log symptoms, fever patterns, and medication schedules with easy-to-use tools.</p>
+                    <h3>Symptom Tracking & Medication Log</h3>
+                    <p>Easily record symptoms, fever trends, and medication details while staying on top of dosages and schedules through smart, timely reminders.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -719,20 +1134,6 @@
                     </div>
                     <h3>Personalized Activity Recommendations</h3>
                         <p>Access AI-powered, research-based activities tailored to enhance your child's developmental milestones and essential skill growth.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <h3>Medication Log</h3>
-                    <p>Track medications, dosages, and schedules with timely reminders.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-baby"></i>
-                    </div>
-                    <h3>Milestone Tracking</h3>
-                    <p>Document important developmental milestones from first steps to first words.</p>
                 </div>
             </div>
         </div>
@@ -857,11 +1258,7 @@
                 <div class="footer-column">
                     <h3>KiddoCare</h3>
                     <p>The trusted health monitoring app for parents of children up to 10 years old.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -875,14 +1272,13 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> kiddocaresupport@gmail.com</li>
-                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Health St, Care City</li>
+                        <li><i class="fas fa-envelope"></i> kiddocare.team@gmail.com</li>
+                        
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 KiddoCare. All rights reserved.</p>
+                <p>&copy; 2025 KiddoCare. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -904,12 +1300,12 @@
         // Google Forms button functionality
         document.getElementById('googleFormBtn').addEventListener('click', function() {
             // Replace with your actual Google Forms URL
-            window.open('https://forms.gle/your-form-id-here', '_blank');
+            window.open('https://forms.gle/3RFoFB5EvMRTsE9t8', '_blank');
         });
         
         document.getElementById('cta-button').addEventListener('click', function() {
             // Replace with your actual Google Forms URL
-            window.open('https://forms.gle/your-form-id-here', '_blank');
+            window.open('https://forms.gle/3RFoFB5EvMRTsE9t8', '_blank');
         });
         
         // Age tab functionality
